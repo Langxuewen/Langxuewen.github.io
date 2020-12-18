@@ -1,255 +1,380 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<html lang="zh-CN">
 
+  <head>
+  <meta charset="utf-8">
+  <meta name="author" content="zchengsite, 1451426471@qq.com" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
   
   <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
+
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
   
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
   
-    <link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
   
+<script src="/js/fancybox.js"></script>
+
+
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
 <meta name="generator" content="Hexo 5.1.1"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/categeries">Categories</a>
-        
-          <a class="main-nav-link" href="/tags">tags</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Oranges</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <div class="container index">
+  <div class="post-list">
+    <!-- 遍历渲染文章 -->
+    
+      <div class="post-item" title="关于JavaScript原型链">
+        <div class="time-m-d">2020-12-18</div>
+        <div class="title">
+          <a href="/2020/12/18/%E5%85%B3%E4%BA%8EJavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/">
+            
+              
+                <span>关于JavaScript原型链</span>
+              
+            
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-关于JavaScript原型链" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/12/18/%E5%85%B3%E4%BA%8EJavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="article-date">
-  <time datetime="2020-12-18T07:06:43.415Z" itemprop="datePublished">2020-12-18</time>
-</a>
     
   </div>
-  <div class="article-inner">
+  <nav class="post-navigation">
     
+    <span class="page-num">1 / 1</span>
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/18/%E5%85%B3%E4%BA%8EJavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/">关于JavaScript原型链</a>
-    </h1>
-  
+  </nav>
+</div>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+        <div class="footer">
+  <div class="social">
+    <ul>
       
-        <h3 id="创建对象的方法"><a href="#创建对象的方法" class="headerlink" title="创建对象的方法"></a>创建对象的方法</h3><p>在了解原型链之前，先了解以下三种<strong>创建对象的几种方式：</strong> </p>
-<p>//第一种：字面量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1=&#123;<span class="attr">name</span>:<span class="string">&#x27;o1&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">var</span> o2=<span class="keyword">new</span> <span class="built_in">Object</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;o2&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>//第二种：构造函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M=<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;<span class="built_in">this</span>.name=name;&#125;</span><br><span class="line"><span class="keyword">var</span> o3=<span class="keyword">new</span> M(<span class="string">&#x27;o3&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>//第三种：Object.create</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s=&#123;<span class="attr">name</span>:<span class="string">&#x27;s&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">var</span> o4=<span class="built_in">Object</span>.create(s)</span><br></pre></td></tr></table></figure>
-
-<p>打印结果：</p>
-<p>o1：{ name: ‘o1’ }<br>o2：{ name: ‘o2’ }<br>o3：M { name: ‘o3’ }<br>o4：{}</p>
-<p>至于结果为什么是这样？慢慢来，继续往下看…</p>
-<h3 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h3><p>先来一张图</p>
-<p><img src="https://images2018.cnblogs.com/blog/1265396/201711/1265396-20171127082821065-1506469155.png" alt="img"></p>
-<h4 id="什么是实例？原型对象？构造函数？"><a href="#什么是实例？原型对象？构造函数？" class="headerlink" title="什么是实例？原型对象？构造函数？"></a>什么是实例？原型对象？构造函数？</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M=<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;<span class="built_in">this</span>.name=name;&#125;</span><br><span class="line"><span class="keyword">var</span> o3=<span class="keyword">new</span> M(<span class="string">&#x27;o3&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>在这段代码里：</p>
-<ul>
-<li>实例就是对象，o3即为实例，M为构造函数</li>
-<li>实例通过new一个构造函数生成</li>
-<li>从上图可知，实例的<code>__proto__</code>指向原型对象，实例的构造函数的prototype也指向原型对象，原型对象的construor指向的是构造函数</li>
-<li>M的prototype指向原型对象，o3的 <code>__proto__</code>也指向同一个原型对象，因为o3是通过M new出来的，即( o3.__proto__===M.prototype) 为true</li>
-<li>原型对象里的 constructor 属性就是构造函数</li>
-<li>M.prototype.constructor===M 为true，即M的原型对象的构造函数就是M本身</li>
-</ul>
-<h4 id="那什么是原型链？"><a href="#那什么是原型链？" class="headerlink" title="那什么是原型链？"></a>那什么是原型链？</h4><p>每个实例对象 （object ）都有一个私有属性（称之为 <code>__proto__</code> ）指向它的构造函数的原型对象（prototype ）。该原型对象也有一个自己的原型对象( <code>__proto__</code> ) ，层层向上，直到一个对象的原型对象为 <code>null</code>，形成一条原型链。根据定义，<code>null</code> 没有原型，并作为这个<strong>原型链</strong>中的最后一个环节。</p>
-<h4 id="原型对象和实例之间有什么作用呢？"><a href="#原型对象和实例之间有什么作用呢？" class="headerlink" title="原型对象和实例之间有什么作用呢？"></a>原型对象和实例之间有什么作用呢？</h4><p>当通过一个构造函数创建出来的多个实例都要添加一个方法时，若给每个实例都去添加该方法并不是一个明智的选择，这时原型的作用就明显了。</p>
-<p>在实例的原型上添加此方法，那么这个原型的所有实例就都有了这个方法。</p>
-<p>接着上面的例子演示：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123; <span class="built_in">this</span>.name = name; &#125;</span><br><span class="line"><span class="keyword">var</span> o3 = <span class="keyword">new</span> M(<span class="string">&#x27;o3&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> o5 = <span class="keyword">new</span> M()</span><br><span class="line">M.prototype.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// o3.__proto__.say=function()&#123;</span></span><br><span class="line"><span class="comment">//   console.log(&#x27;hello&#x27;)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line">o3.say()</span><br><span class="line">o5.say()</span><br></pre></td></tr></table></figure>
-
-<p>通过构造函数的prototype属性和实例的<code>__proto__</code>属性添加方法都可</p>
-<p>打印结果：</p>
-<p>hello<br>hello</p>
-<h5 id="【补充】"><a href="#【补充】" class="headerlink" title="【补充】"></a>【补充】</h5><p>​    只有函数有prototype，对象是没有的</p>
-<p>​    函数也是有<code>__proto__</code>的，因为函数也是对象</p>
-<p>​    函数的<code>__proto__</code>指向Function.prototype</p>
-<p>​    即 普通函数是Function这个构造函数的一个实例</p>
-<p>​    </p>
-<h3 id="instanceof-原理"><a href="#instanceof-原理" class="headerlink" title="instanceof 原理"></a>instanceof 原理</h3><p><img src="https://images2018.cnblogs.com/blog/1265396/201711/1265396-20171127092153300-1935600767.png" alt="img"></p>
-<p>​    instanceof判断的是 实例对象的<code>__proto__</code>和生成该实例的构造函数的prototype是否引用自同一个地址，即判断<code>constructor.prototype </code>是否存在于实例对象的原型链上。</p>
-<p>​    是则返回true，不是返回false。</p>
-<p>那么怎么判断实例是由哪个构造函数生成的呢？这时就要用到constructor了。</p>
-<p>obj.__proto__.constructor  实例的原型的构造函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">o3.__proto__.constructor===M   <span class="comment">//true</span></span><br><span class="line">o3.__proto__,<span class="keyword">constructor</span>===Object  //false</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="new-运算符"><a href="#new-运算符" class="headerlink" title="new 运算符"></a>new 运算符</h3><h4 id="new-关键字的操作？"><a href="#new-关键字的操作？" class="headerlink" title="new 关键字的操作？"></a><strong>new 关键字的操作？</strong></h4><p>​    1.创建一个空的简单JavaScript对象（即{}）</p>
-<p>​    2.链接该对象（设置该对象的constructor）到另一个对象</p>
-<p>​    3.将步骤1新创建的对象作为this的上下文</p>
-<p>​    4.若该函数没有返回对象，则返回this</p>
-<h4 id="创建一个用户自定义对象需要两步："><a href="#创建一个用户自定义对象需要两步：" class="headerlink" title="创建一个用户自定义对象需要两步："></a><strong>创建一个用户自定义对象需要两步：</strong></h4><p>​    1.编写函数实现定义对象类型</p>
-<p>​    2.通过<code>new</code>创建对象实例</p>
-<h4 id="当执行代码-new-Foo-时，会发生以下事情："><a href="#当执行代码-new-Foo-时，会发生以下事情：" class="headerlink" title="当执行代码 new Foo(...) 时，会发生以下事情："></a><strong>当执行代码 <code>new Foo(...)</code> 时，会发生以下事情：</strong></h4><p>​    1.一个继承自<code>Foo.prototype</code>的新对象被创建</p>
-<p>​    2.使用指定的参数调用构造函数<code>Foo</code>，并将this绑定到新创建的对象。（<code>new Foo</code>等同于<code>new Foo()</code>，也就是没有指定参数列表，<code>Foo</code>不带任何参数调用的情况）</p>
-<p>​    3.由构造函数返回的对象就是<code>new</code>表达式的结果（若构造函数没有显式返回一个对象，则使用步骤1创建的对象）</p>
-<p>如果你没有使用 <code>new</code> 运算符， <strong>构造函数会像其他的常规函数一样被调用，</strong> 并不会创建一个对象。在这种情况下， <code>this</code> 的指向也是不一样的。</p>
-<h4 id="基于new的工作原理，手动实现一个new运算符："><a href="#基于new的工作原理，手动实现一个new运算符：" class="headerlink" title="基于new的工作原理，手动实现一个new运算符："></a>基于new的工作原理，手动实现一个new运算符：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> new1=<span class="function"><span class="keyword">function</span>(<span class="params">func</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o=<span class="built_in">Object</span>.create(func.prototype);<span class="comment">//创建对象</span></span><br><span class="line">  <span class="keyword">var</span> k=func.call(o);<span class="comment">//改变this指向，结果赋给k</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> k ===<span class="string">&#x27;object&#x27;</span>)<span class="keyword">return</span> k;<span class="comment">//k是对象，返回k</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> o;<span class="comment">//若k不为对象，则返回构造函数的执行结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="Object-create（）"><a href="#Object-create（）" class="headerlink" title="Object.create（）"></a>Object.create（）</h4><p>使用该方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto __。</p>
-<h5 id=""><a href="#" class="headerlink" title=""></a></h5>
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/18/%E5%85%B3%E4%BA%8EJavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/" data-id="ckitxk6lg0001aone3l4belsn" class="article-share-link">Share</a>
+        <li>
+          <a title="email" href="">
+            <i class="iconfont icon-envelope"></i>
+          </a>
+        </li>
       
+        <li>
+          <a title="facebook" href="">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
       
-    </footer>
+        <li>
+          <a title="twitter" href="">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="wechat" href="">
+            <i class="iconfont icon-wechat"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="weibo" href="">
+            <i class="iconfont icon-weibo"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
   </div>
   
-</article>
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    <div class="footer-more">
+      <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2020</a>
     </div>
-  </div>
-
-
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/12/18/%E5%85%B3%E4%BA%8EJavaScript%E5%8E%9F%E5%9E%8B%E9%93%BE/">关于JavaScript原型链</a>
-          </li>
-        
-      </ul>
+    <div class="footer-more">
+      <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
     </div>
-  </div>
-
   
-</aside>
-        
+</div>
+
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
     </div>
   </div>
-</footer>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categeries" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">tags</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
+  </body>
 </html>
