@@ -63,6 +63,10 @@
           <a href="/archives/">Archives</a>
         </li>
       
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">Categories</a>
+        </li>
+      
         <li class="nav-item" data-path="/tags/">
           <a href="/tags/">Tags</a>
         </li>
@@ -97,133 +101,6 @@
   
 
   
-  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-  <div class="container post-details" id="post-details">
-    <div class="post-content">
-      <div class="post-title">关于JavaScript原型链</div>
-      <div class="post-attach">
-        <span class="post-pubtime">
-          <i class="iconfont icon-updatetime" title="Update time"></i>
-          2020-12-18
-        </span>
-        
-      </div>
-      <div class="markdown-body">
-        <h3 id="创建对象的方法"><a href="#创建对象的方法" class="headerlink" title="创建对象的方法"></a>创建对象的方法</h3><p>在了解原型链之前，先了解以下三种<strong>创建对象的几种方式：</strong> </p>
-<p>//第一种：字面量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1=&#123;<span class="attr">name</span>:<span class="string">&#x27;o1&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">var</span> o2=<span class="keyword">new</span> <span class="built_in">Object</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;o2&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>//第二种：构造函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M=<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;<span class="built_in">this</span>.name=name;&#125;</span><br><span class="line"><span class="keyword">var</span> o3=<span class="keyword">new</span> M(<span class="string">&#x27;o3&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>//第三种：Object.create</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s=&#123;<span class="attr">name</span>:<span class="string">&#x27;s&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">var</span> o4=<span class="built_in">Object</span>.create(s)</span><br></pre></td></tr></table></figure>
-
-<p>打印结果：</p>
-<p>o1：{ name: ‘o1’ }<br>o2：{ name: ‘o2’ }<br>o3：M { name: ‘o3’ }<br>o4：{}</p>
-<p>至于结果为什么是这样？慢慢来，继续往下看…</p>
-<h3 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h3><p>先来一张图</p>
-<p><img src="https://images2018.cnblogs.com/blog/1265396/201711/1265396-20171127082821065-1506469155.png" alt="img"></p>
-<h4 id="什么是实例？原型对象？构造函数？"><a href="#什么是实例？原型对象？构造函数？" class="headerlink" title="什么是实例？原型对象？构造函数？"></a>什么是实例？原型对象？构造函数？</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M=<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;<span class="built_in">this</span>.name=name;&#125;</span><br><span class="line"><span class="keyword">var</span> o3=<span class="keyword">new</span> M(<span class="string">&#x27;o3&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>在这段代码里：</p>
-<ul>
-<li>实例就是对象，o3即为实例，M为构造函数</li>
-<li>实例通过new一个构造函数生成</li>
-<li>从上图可知，实例的<code>__proto__</code>指向原型对象，实例的构造函数的prototype也指向原型对象，原型对象的construor指向的是构造函数</li>
-<li>M的prototype指向原型对象，o3的 <code>__proto__</code>也指向同一个原型对象，因为o3是通过M new出来的，即( o3.__proto__===M.prototype) 为true</li>
-<li>原型对象里的 constructor 属性就是构造函数</li>
-<li>M.prototype.constructor===M 为true，即M的原型对象的构造函数就是M本身</li>
-</ul>
-<h4 id="那什么是原型链？"><a href="#那什么是原型链？" class="headerlink" title="那什么是原型链？"></a>那什么是原型链？</h4><p>每个实例对象 （object ）都有一个私有属性（称之为 <code>__proto__</code> ）指向它的构造函数的原型对象（prototype ）。该原型对象也有一个自己的原型对象( <code>__proto__</code> ) ，层层向上，直到一个对象的原型对象为 <code>null</code>，形成一条原型链。根据定义，<code>null</code> 没有原型，并作为这个<strong>原型链</strong>中的最后一个环节。</p>
-<h4 id="原型对象和实例之间有什么作用呢？"><a href="#原型对象和实例之间有什么作用呢？" class="headerlink" title="原型对象和实例之间有什么作用呢？"></a>原型对象和实例之间有什么作用呢？</h4><p>当通过一个构造函数创建出来的多个实例都要添加一个方法时，若给每个实例都去添加该方法并不是一个明智的选择，这时原型的作用就明显了。</p>
-<p>在实例的原型上添加此方法，那么这个原型的所有实例就都有了这个方法。</p>
-<p>接着上面的例子演示：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123; <span class="built_in">this</span>.name = name; &#125;</span><br><span class="line"><span class="keyword">var</span> o3 = <span class="keyword">new</span> M(<span class="string">&#x27;o3&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> o5 = <span class="keyword">new</span> M()</span><br><span class="line">M.prototype.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// o3.__proto__.say=function()&#123;</span></span><br><span class="line"><span class="comment">//   console.log(&#x27;hello&#x27;)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line">o3.say()</span><br><span class="line">o5.say()</span><br></pre></td></tr></table></figure>
-
-<p>通过构造函数的prototype属性和实例的<code>__proto__</code>属性添加方法都可</p>
-<p>打印结果：</p>
-<p>hello<br>hello</p>
-<h5 id="【补充】"><a href="#【补充】" class="headerlink" title="【补充】"></a>【补充】</h5><p>​    只有函数有prototype，对象是没有的</p>
-<p>​    函数也是有<code>__proto__</code>的，因为函数也是对象</p>
-<p>​    函数的<code>__proto__</code>指向Function.prototype</p>
-<p>​    即 普通函数是Function这个构造函数的一个实例</p>
-<p>​    </p>
-<h3 id="instanceof-原理"><a href="#instanceof-原理" class="headerlink" title="instanceof 原理"></a>instanceof 原理</h3><p><img src="https://images2018.cnblogs.com/blog/1265396/201711/1265396-20171127092153300-1935600767.png" alt="img"></p>
-<p>​    instanceof判断的是 实例对象的<code>__proto__</code>和生成该实例的构造函数的prototype是否引用自同一个地址，即判断<code>constructor.prototype </code>是否存在于实例对象的原型链上。</p>
-<p>​    是则返回true，不是返回false。</p>
-<p>那么怎么判断实例是由哪个构造函数生成的呢？这时就要用到constructor了。</p>
-<p>obj.__proto__.constructor  实例的原型的构造函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">o3.__proto__.constructor===M   <span class="comment">//true</span></span><br><span class="line">o3.__proto__,<span class="keyword">constructor</span>===Object  //false</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="new-运算符"><a href="#new-运算符" class="headerlink" title="new 运算符"></a>new 运算符</h3><h4 id="new-关键字的操作？"><a href="#new-关键字的操作？" class="headerlink" title="new 关键字的操作？"></a><strong>new 关键字的操作？</strong></h4><p>​    1.创建一个空的简单JavaScript对象（即{}）</p>
-<p>​    2.链接该对象（设置该对象的constructor）到另一个对象</p>
-<p>​    3.将步骤1新创建的对象作为this的上下文</p>
-<p>​    4.若该函数没有返回对象，则返回this</p>
-<h4 id="创建一个用户自定义对象需要两步："><a href="#创建一个用户自定义对象需要两步：" class="headerlink" title="创建一个用户自定义对象需要两步："></a><strong>创建一个用户自定义对象需要两步：</strong></h4><p>​    1.编写函数实现定义对象类型</p>
-<p>​    2.通过<code>new</code>创建对象实例</p>
-<h4 id="当执行代码-new-Foo-时，会发生以下事情："><a href="#当执行代码-new-Foo-时，会发生以下事情：" class="headerlink" title="当执行代码 new Foo(...) 时，会发生以下事情："></a><strong>当执行代码 <code>new Foo(...)</code> 时，会发生以下事情：</strong></h4><p>​    1.一个继承自<code>Foo.prototype</code>的新对象被创建</p>
-<p>​    2.使用指定的参数调用构造函数<code>Foo</code>，并将this绑定到新创建的对象。（<code>new Foo</code>等同于<code>new Foo()</code>，也就是没有指定参数列表，<code>Foo</code>不带任何参数调用的情况）</p>
-<p>​    3.由构造函数返回的对象就是<code>new</code>表达式的结果（若构造函数没有显式返回一个对象，则使用步骤1创建的对象）</p>
-<p>如果你没有使用 <code>new</code> 运算符， <strong>构造函数会像其他的常规函数一样被调用，</strong> 并不会创建一个对象。在这种情况下， <code>this</code> 的指向也是不一样的。</p>
-<h4 id="基于new的工作原理，手动实现一个new运算符："><a href="#基于new的工作原理，手动实现一个new运算符：" class="headerlink" title="基于new的工作原理，手动实现一个new运算符："></a>基于new的工作原理，手动实现一个new运算符：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> new1=<span class="function"><span class="keyword">function</span>(<span class="params">func</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o=<span class="built_in">Object</span>.create(func.prototype);<span class="comment">//创建对象</span></span><br><span class="line">  <span class="keyword">var</span> k=func.call(o);<span class="comment">//改变this指向，结果赋给k</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> k ===<span class="string">&#x27;object&#x27;</span>)<span class="keyword">return</span> k;<span class="comment">//k是对象，返回k</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> o;<span class="comment">//若k不为对象，则返回构造函数的执行结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="Object-create（）"><a href="#Object-create（）" class="headerlink" title="Object.create（）"></a>Object.create（）</h4><p>使用该方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto __。</p>
-<h5 id=""><a href="#" class="headerlink" title=""></a></h5>
-      </div>
-      
-        <div class="prev-or-next">
-          <div class="post-foot-next">
-            
-          </div>
-          <div class="post-attach">
-            <span class="post-pubtime">
-              <i class="iconfont icon-updatetime" title="Update time"></i>
-              2020-12-18
-            </span>
-            
-          </div>
-          <div class="post-foot-prev">
-            
-              <a href="/2020/12/19/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%8F%8A%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-    </div>
-    
-  <div class="post-catalog" id="catalog">
-    <div class="title">Contents</div>
-    <div class="catalog-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">创建对象的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-text">原型及原型链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%9E%E4%BE%8B%EF%BC%9F%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%EF%BC%9F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-text">什么是实例？原型对象？构造函数？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%A3%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%9E%8B%E9%93%BE%EF%BC%9F"><span class="toc-text">那什么是原型链？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AE%9E%E4%BE%8B%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%E5%91%A2%EF%BC%9F"><span class="toc-text">原型对象和实例之间有什么作用呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%80%90%E8%A1%A5%E5%85%85%E3%80%91"><span class="toc-text">【补充】</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#instanceof-%E5%8E%9F%E7%90%86"><span class="toc-text">instanceof 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">new 运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#new-%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%9F"><span class="toc-text">new 关键字的操作？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%B9%E8%B1%A1%E9%9C%80%E8%A6%81%E4%B8%A4%E6%AD%A5%EF%BC%9A"><span class="toc-text">创建一个用户自定义对象需要两步：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81-new-Foo-%E6%97%B6%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%A5%E4%B8%8B%E4%BA%8B%E6%83%85%EF%BC%9A"><span class="toc-text">当执行代码 new Foo(...) 时，会发生以下事情：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Enew%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%8C%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAnew%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A"><span class="toc-text">基于new的工作原理，手动实现一个new运算符：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-create%EF%BC%88%EF%BC%89"><span class="toc-text">Object.create（）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text"></span></a></li></ol></li></ol></li></ol>
-    </div>
-  </div>
-
-  
-<script src="/js/catalog.js"></script>
-
-
-
-
-    
-      <div class="comments-container">
-        
-
-
-
-
-
-      </div>
-    
-  </div>
-
 
         <div class="footer">
   <div class="social">
