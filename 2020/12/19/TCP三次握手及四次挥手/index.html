@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>TCP三次握手   | langxuewen&#39;s blog</title>
+  <title>vue-router模式   | langxuewen&#39;s blog</title>
 
   
     <link rel="apple-touch-icon" href="/images/favicon.png">
@@ -96,7 +96,7 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">TCP三次握手</div>
+      <div class="post-title">vue-router模式</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime" title="Update time"></i>
@@ -107,8 +107,8 @@
                 <i class="iconfont icon-bookmark" title="Categories"></i>
                 
                 <span class="span--category">
-                  <a href="/categories/%E7%BD%91%E7%BB%9C/" title="网络">
-                    <b>#</b> 网络
+                  <a href="/categories/Vue/" title="Vue">
+                    <b>#</b> Vue
                   </a>
                 </span>
                 
@@ -116,7 +116,46 @@
           
       </div>
       <div class="markdown-body">
-        
+        <h2 id="vue-router两种模式：hash、history"><a href="#vue-router两种模式：hash、history" class="headerlink" title="vue-router两种模式：hash、history"></a>vue-router两种模式：hash、history</h2><h3 id="hash模式"><a href="#hash模式" class="headerlink" title="hash模式"></a>hash模式</h3><ul>
+<li>默认模式</li>
+<li>原理：<code>onhashchange</code>事件，可以通过window对象来监听该事件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onhashchange = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(event.oldURL, event.newURL);</span><br><span class="line">    <span class="keyword">let</span> hash = loaction.hash.slice(<span class="number">1</span>);  <span class="comment">//通过location对象来获取hash地址</span></span><br><span class="line">    <span class="built_in">document</span>.body.style.color=hash;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（其中<code>Location</code>是js里管理地址栏的内置对象，可通过window.location 属性来访问，该对象包含有关当前URL的信息。详细参考<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jsref/dom_obj_location.asp">w3school</a> ）</p>
+<p>如<code>//http://www.aaa.com/#/hello</code>这个地址中，hash值为<code>#/hello</code></p>
+<h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4><ul>
+<li>hash 出现在 URL 中，但不被包括在 HTTP 请求中</li>
+<li>hash 值变化不会导致浏览器向服务器发出请求，故而<strong>不会重新加载页面</strong></li>
+</ul>
+<p>hash 改变会触发 hashchange 事件，且hash发生变化的URL都会被浏览器记录下来，浏览器的进后退也能对其进行控制。</p>
+<h3 id="history模式"><a href="#history模式" class="headerlink" title="history模式"></a><strong>history模式</strong></h3><p>history api可以分为两大部分：切换和修改</p>
+<h4 id="切换历史状态"><a href="#切换历史状态" class="headerlink" title="切换历史状态"></a>切换历史状态</h4><p>包括<code>back、forward</code>、<code>go</code>三个方法，对应浏览器的前进，后退，跳转操作</p>
+<p><code>history.back()</code>    </p>
+<ul>
+<li>在浏览器历史记录里前往<strong>上一页</strong>，用户可点击浏览器左上角的返回</li>
+<li>等价于<code>history.go(-1)</code></li>
+<li>当浏览器会话历史记录位于第一页时调用此方法没有效果，而且也不会报错</li>
+</ul>
+<p><code>hsitory.forward()</code></p>
+<ul>
+<li>在浏览器历史记录里前往<strong>下一页</strong>，用户可点击浏览器左上角的前进</li>
+<li>等价于<code>history.go(1)</code></li>
+<li>当浏览器历史栈位于最前端时（当前页面位于最后一页时）调用此方法没有效果也不报错</li>
+</ul>
+<p><code>history.go()</code></p>
+<ul>
+<li>参数：-1时为上一页，1时为下一页，-2为后退两页，2为前进两页</li>
+<li>当整体参数超出界限时，这个方法没有任何效果也不会报错</li>
+<li>调用没有参数的 <code>go() </code>方法或者不是整体的参数时也没有效果</li>
+</ul>
+<h4 id="修改历史状态"><a href="#修改历史状态" class="headerlink" title="修改历史状态"></a>修改历史状态</h4><p>包括了<code>pushState、replaceState</code>两个方法，这两个方法接收三个参数：state，title，url</p>
+<p><code>History.pushState()</code></p>
+<ul>
+<li><p>待补充…</p>
+</li>
+</ul>
+<h5 id=""><a href="#" class="headerlink" title=""></a></h5>
       </div>
       
         <div class="prev-or-next">
@@ -138,8 +177,8 @@
                     <i class="iconfont icon-bookmark" title="Categories"></i>
                     
                     <span class="span--category">
-                      <a href="/categories/%E7%BD%91%E7%BB%9C/" title="网络">
-                        <b>#</b> 网络
+                      <a href="/categories/Vue/" title="Vue">
+                        <b>#</b> Vue
                       </a>
                     </span>
                     
@@ -153,6 +192,18 @@
       
     </div>
     
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue-router%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%BC%8F%EF%BC%9Ahash%E3%80%81history"><span class="toc-text">vue-router两种模式：hash、history</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hash%E6%A8%A1%E5%BC%8F"><span class="toc-text">hash模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-text">特点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#history%E6%A8%A1%E5%BC%8F"><span class="toc-text">history模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%8E%86%E5%8F%B2%E7%8A%B6%E6%80%81"><span class="toc-text">切换历史状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8E%86%E5%8F%B2%E7%8A%B6%E6%80%81"><span class="toc-text">修改历史状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-text"></span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
       <div class="comments-container">
