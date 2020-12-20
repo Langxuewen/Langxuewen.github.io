@@ -129,7 +129,8 @@
 <li>hash 值变化不会导致浏览器向服务器发出请求，故而<strong>不会重新加载页面</strong></li>
 </ul>
 <p>hash 改变会触发 hashchange 事件，且hash发生变化的URL都会被浏览器记录下来，浏览器的进后退也能对其进行控制。</p>
-<h3 id="history模式"><a href="#history模式" class="headerlink" title="history模式"></a><strong>history模式</strong></h3><p>history api可以分为两大部分：切换和修改</p>
+<h3 id="history模式"><a href="#history模式" class="headerlink" title="history模式"></a><strong>history模式</strong></h3><p><strong><code>History</code></strong> 接口允许操作浏览器的曾经在标签页或者框架里访问的会话历史记录。</p>
+<p>history api可以分为两大部分：切换和修改</p>
 <h4 id="切换历史状态"><a href="#切换历史状态" class="headerlink" title="切换历史状态"></a>切换历史状态</h4><p>包括<code>back、forward</code>、<code>go</code>三个方法，对应浏览器的前进，后退，跳转操作</p>
 <p><code>history.back()</code>    </p>
 <ul>
@@ -149,12 +150,32 @@
 <li>当整体参数超出界限时，这个方法没有任何效果也不会报错</li>
 <li>调用没有参数的 <code>go() </code>方法或者不是整体的参数时也没有效果</li>
 </ul>
-<h4 id="修改历史状态"><a href="#修改历史状态" class="headerlink" title="修改历史状态"></a>修改历史状态</h4><p>包括了<code>pushState、replaceState</code>两个方法，这两个方法接收三个参数：state，title，url</p>
+<h4 id="修改历史状态"><a href="#修改历史状态" class="headerlink" title="修改历史状态"></a>修改历史状态</h4><p>包括了<code>pushState、replaceState</code>两个方法</p>
 <p><code>History.pushState()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">history.pushState(state, title , [url])</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><p>待补充…</p>
-</li>
+<li>按指定的名称和URL（如果提供该参数）将数据push进会话历史栈，数据被DOM进行不透明处理</li>
+<li>向当前浏览器会话的历史堆栈中添加一个状态（state）</li>
+<li>state 状态对象是一个JavaScript对象，它与<code>pushState()</code>创建的新历史记录条目相关联</li>
+<li>state 状态对象可以是任何可以序列化的对象</li>
+<li>在title处传递<strong>空字符串</strong>应该可以防止将来对方法的更改</li>
+<li>新历史记录条目的URL由url参数指定</li>
+<li><code>pushState()</code> 不会造成 <code>hashchange</code> 事件调用, 即使新的URL和之前的URL只是hash值的不同</li>
 </ul>
+<p><code>History.replaceState()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">history.replaceState(stateObj, title, [url]);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>按指定的数据，名称和URL(如果提供该参数)，更新历史栈上最新的入口</li>
+<li>stateObj 状态对象是一个JavaScript对象，它与传递给该<code>replaceState</code>方法的历史记录条目相关联。状态对象可以是<code>null</code></li>
+<li>在title处传递<strong>空字符串</strong>应该可以防止将来对方法的更改</li>
+<li>url(可选的) ,历史记录条目的URL。新网址必须与当前网址具有相同的来源，否则replaceState会引发异常</li>
+</ul>
+<p>相比起hash，history模式更加美观，不过如官网中说的 “ 这种模式要玩好，还需要后台配置支持”。</p>
+<p>我们的应用是个单页客户端应用，如果后台没有正确的配置，当用户在浏览器直接访问时就会返回404，这就直接影响到我们页面的美感了。</p>
+<p>可以通过在服务端增加一个覆盖所有情况的候选资源来解决此问题：如果 URL 匹配不到任何静态资源，则应该返回同一个 <code>index.html</code> 页面，这个页面就是你 app 依赖的页面。</p>
+<p>有关后端配置<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/guide/essentials/history-mode.html">参考</a></p>
 <h5 id=""><a href="#" class="headerlink" title=""></a></h5>
       </div>
       
