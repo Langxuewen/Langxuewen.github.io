@@ -130,7 +130,7 @@
 <p>o1：{ name: ‘o1’ }<br>o2：{ name: ‘o2’ }<br>o3：M { name: ‘o3’ }<br>o4：{}</p>
 <p>至于结果为什么是这样？慢慢来，继续往下看…</p>
 <h3 id="原型及原型链"><a href="#原型及原型链" class="headerlink" title="原型及原型链"></a>原型及原型链</h3><p>先来一张图</p>
-<p><img src="https://images2018.cnblogs.com/blog/1265396/201711/1265396-20171127082821065-1506469155.png" alt="img"></p>
+<p><img src="G:\Blog\blog\source_posts\1265396-20171127082821065-1506469155.png" alt="1265396-20171127082821065-1506469155"></p>
 <h4 id="什么是实例？原型对象？构造函数？"><a href="#什么是实例？原型对象？构造函数？" class="headerlink" title="什么是实例？原型对象？构造函数？"></a>什么是实例？原型对象？构造函数？</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> M=<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;<span class="built_in">this</span>.name=name;&#125;</span><br><span class="line"><span class="keyword">var</span> o3=<span class="keyword">new</span> M(<span class="string">&#x27;o3&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>在这段代码里：</p>
@@ -156,7 +156,7 @@
 <p>​    函数的<code>__proto__</code>指向Function.prototype</p>
 <p>​    即 普通函数是Function这个构造函数的一个实例</p>
 <p>​    </p>
-<h3 id="instanceof-原理"><a href="#instanceof-原理" class="headerlink" title="instanceof 原理"></a>instanceof 原理</h3><p><img src="https://images2018.cnblogs.com/blog/1265396/201711/1265396-20171127092153300-1935600767.png" alt="img"></p>
+<h3 id="instanceof-原理"><a href="#instanceof-原理" class="headerlink" title="instanceof 原理"></a>instanceof 原理</h3><p><img src="G:\Blog\blog\source_posts\1265396-20171127092153300-1935600767.png" alt="1265396-20171127092153300-1935600767"></p>
 <p>​    instanceof判断的是 实例对象的<code>__proto__</code>和生成该实例的构造函数的prototype是否引用自同一个地址，即判断<code>constructor.prototype </code>是否存在于实例对象的原型链上。</p>
 <p>​    是则返回true，不是返回false。</p>
 <p>那么怎么判断实例是由哪个构造函数生成的呢？这时就要用到constructor了。</p>
